@@ -1,0 +1,18 @@
+In this project we will be treating React part as client, Express JS/Redis/postGress conn part as server.
+We will be treating each service as microservice with each having their own dockerfile.
+
+*. First we started with client microservice and created a Dockerfile.dev
+*. Similarly we will create the DOckerfile.dev for both server and worker service.
+## The server service try to connect with Redis DB n postgress but we do not have redis DB and postgress
+   server running inside the Container, in order to resolve it we need to have redis n postgress running via docker-compose.
+
+*. The keys file inside the server folder is listing the env variables setup for the container
+*. Env Variables:
+     variableName=value // sets the value in the container at *run time*
+     variableName // value is taken from thr computer.
+   In docker-compose file, the service name in case of redis and postgress will be the hostname.
+*. In order to connect to the outside world browser from container we need to expose the port to the outside world.
+**. Production Multi-Container Deployment
+    FLOW: Push code to github >> Travis automatically pulls repo >> Travis builds a test image, tests code
+          >> Travis builds prod image >> Travis build prod image to Docker hub >> Travis pushes project to  AWS EB
+          >> EB pulls image from Docker Hub deploys. (Now Elastic bean stalk will not do any build process for us)
