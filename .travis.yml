@@ -11,13 +11,13 @@ script:
 
 after_success:
   - docker build -t pr306500/multi-client ./client
-  - docker build -t pr306500/multi-nginx ./nginx
+  - docker build -t pr306500/multi-nginx  ./nginx
   - docker build -t pr306500/multi-server ./server
   - docker build -t pr306500/multi-worker ./worker
 
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
-  - docker push pr306500/multi-client
+  - docker push localhost:3000/pr306500/multi-client
   - docker push pr306500/multi-nginx
   - docker push pr306500/multi-server
   - docker push pr306500/multi-worker
