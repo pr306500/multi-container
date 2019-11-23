@@ -17,7 +17,7 @@ after_success:
 
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
-  - docker push localhost:3000/pr306500/multi-client
+  - docker push client:3000/pr306500/multi-client
   - docker push pr306500/multi-nginx
   - docker push pr306500/multi-server
   - docker push pr306500/multi-worker
