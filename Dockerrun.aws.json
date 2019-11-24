@@ -1,0 +1,36 @@
+{
+	"AWSEBDockerunVersion":2,
+	"containerDefinitions": [
+    	{
+    	   "name":"client",
+    	   "image":"pr306500/multi-client",
+    	   "hostname":"client",
+    	   "essential":false
+    	},
+    	{
+    	   "name":"server",
+    	   "image":"pr306500/multi-server",
+    	   "hostname":"api",
+    	   "essential":false
+    	},
+    	{
+    	   "name":"worker",
+    	   "image":"pr306500/multi-worker",
+    	   "hostname":"worker",
+    	   "essential":false
+    	},
+    	{
+    	   "name":"nginx",
+    	   "image":"pr306500/multi-nginx",
+    	   "hostname":"nginx",
+    	   "essential":true,
+    	   "portMapping":[
+    	   	{
+    	   		"hostPort":80,
+    	   		"containerPort":80
+    	   	}
+    	   ],
+    	   "links":["client","server"]
+    	}
+	]
+}
