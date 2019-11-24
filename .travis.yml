@@ -23,6 +23,7 @@ after_success:
   - docker push pr306500/multi-worker
 
 deploy:
+  edge: true
   provider: elasticbeanstalk
   region: "us-east-2"
   app: "docker-react"
